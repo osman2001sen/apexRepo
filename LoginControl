@@ -1,0 +1,11 @@
+public class Kontrol {
+    
+    public static String loginKontrol(String email, Integer sifre){
+        if(email=='osman2001sen@gmail.com' && sifre==123456){
+            return 'Giriş Başarılı';
+        }else{
+            return 'Lütfen tekrar deneyiniz.';
+        }
+    } ////Girilen Login info, doğru mu değil mi? Ona göre String cevap döndürür bu method.                                                     
+}
+
