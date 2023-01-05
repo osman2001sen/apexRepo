@@ -1,0 +1,10 @@
+List<Contact> x=[SELECT id, Name FROM Contact];
+List<Contact> z= New List<Contact>();
+
+for(Contact y:x){
+    if(y.Name=='Mehmet'){
+        z.add(y);
+    }
+}
+
+delete z;
