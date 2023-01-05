@@ -1,0 +1,6 @@
+Contact x=new Contact();
+
+x.FirstName='Ayse';
+x.LastName='Yildiz';
+
+Insert x;     
