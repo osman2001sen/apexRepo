@@ -1,0 +1,10 @@
+public class DMLClass {
+    public static void registration(String x){
+        Account y=New Account();
+        y.Name=x;
+        Insert y;
+    }                                  
+}
+
+//Anonymous Window
+//DMLClass.registration ('Ozzie Tech Inc.'); 
