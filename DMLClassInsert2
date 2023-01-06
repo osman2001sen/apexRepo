@@ -1,0 +1,13 @@
+public class DMLClass {
+    public static void registration(String x, String p){
+        Account y=New Account();
+        y.Name=x;
+        y.Phone=p;
+        Insert y;
+    }   
+}
+
+/*
+Anonymous Window
+DMLClass.registration('Ozzie Tech', '+12345678910');
+*/  
