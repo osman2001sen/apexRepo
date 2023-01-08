@@ -1,0 +1,20 @@
+public class reachPerson{
+	public static String name='Jack';
+    public String name2='Lauren';
+    public String name3='John';
+}
+
+/*
+***Anonymous window
+
+System.debug(reachPerson.name); //Result: Jack
+
+System.debug(reachPerson.name2); //Variable does not exist error.
+reachPerson name2object=New reachPerson();
+System.debug(name2object.name2); //Result: Lauren
+
+System.debug(reachPerson.name3); //Variable does NOT EXIST error!
+reachPerson name3object=New reachPerson();
+System.debug(name3object.name3);//Result: John
+
+*/
