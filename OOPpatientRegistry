@@ -1,0 +1,30 @@
+public class patientRegistry{
+    
+    public void register(Integer n, String name, String d){
+        Map<Integer, String> Doctor1=New Map<Integer, String>();
+        Map<Integer, String> Doctor2=New Map<Integer, String>();
+        if(d=='Paediatrics'){
+            Doctor1.put(n, name);
+            System.debug('Dr. Smith: '+Doctor1);
+        }else if(d=='Psychiatry'){
+            Doctor2.put(n, name);
+            System.debug('Dr. Brown: '+Doctor2);
+        }else{
+            System.debug('There is no such clinical department in our hospital.');
+        }
+	}
+}
+
+/*
+Anonymous window:
+----------------------------------------------
+patientRegistry patient=New patientRegistry();
+
+patient.register(1, 'Tom Ford', 'Paediatrics');
+patient.register(2, 'John Connor', 'Psychiatry');
+patient.register(3, 'Jill Burja', 'Paediatrics');
+patient.register(4, 'Rebecca Swift', 'Psychiatry');
+patient.register(5, 'Taylor Black', 'Psychiatry');
+patient.register(6, 'Liz Carlton', 'Psychiatry');
+patient.register(7, 'Mike Spencer', 'Cardiology');
+*/
