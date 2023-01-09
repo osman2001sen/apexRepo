@@ -1,0 +1,11 @@
+list<Integer> x=New list<Integer>();
+
+for(Integer a=1; a<=100; a++){
+    Integer b=math.mod(a,5);
+    Integer i=math.mod(a,2);
+    if(b==0 && i==0){
+        x.add(a);
+    }
+}
+
+System.debug(x); //List of Numbers: Mod 2 and 5
