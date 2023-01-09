@@ -1,0 +1,26 @@
+Boolean isAdmin = True;
+Boolean isDeveloper = true;
+/*
+System.debug('isAdmin :'+ isAdmin);
+System.debug('isDeveloper :'+ isDeveloper);
+
+System.Debug('Both isAdmin AND isDeveloper :' + (isAdmin&&isDeveloper));
+
+
+System.Debug('Either isAdmin OR isDeveloper :' + (isAdmin||isDeveloper));
+*/
+
+System.debug('AND && Op : '+ isAdmin+' - '+ isDeveloper +' = > '+ (isAdmin&&isDeveloper)); 
+System.debug('OR  || Op : '+ isAdmin+' - '+ isDeveloper +' = > '+ (isAdmin||isDeveloper));
+
+if(isAdmin&&isDeveloper){
+    System.debug('AND VE => Hem admin hem developer ilanlarına bakıyor....');
+} else {
+    System.debug('AND VE => admin ilanlarına veya developer ilanlarına bakıyor. yada hiç birine bakmıyor...');
+}
+
+if(isAdmin||isDeveloper){
+   System.debug('OR  VEYA => admin veya developer ilanlarına yada her ikisine de bakıyor.....'); 
+} else {
+    System.debug('OR  VEYA => ne admin nede developer ilanlarına bakıyor.....');
+}
