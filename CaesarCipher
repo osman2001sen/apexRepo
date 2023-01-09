@@ -1,0 +1,16 @@
+String message='Hello!';               
+Integer x;      
+Integer s;		
+String c='';    
+String str;		
+
+for(Integer i=0; i<message.length(); i++){
+    //System.debug(message.charAt(i));
+    x=message.charAt(i);
+    s=x+3;
+    str=String.fromCharArray(new Integer[]{s});
+    //System.debug(str);
+    c=c+str;
+}
+
+System.debug(c);
