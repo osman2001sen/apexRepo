@@ -1,0 +1,28 @@
+public class attendanceControl {								
+    public static void control(String name, Boolean z, Boolean rec, Integer abs){
+        											
+	if(z==true){
+            System.debug(name+ ' Welcome to the class');			
+        }else{
+            System.debug(name+ ' You were not in the class today');
+        }
+
+    
+    	if(z==false && abs>=3){
+        	System.debug(name+ ' Is everything ok?');
+    	} else {
+       		System.debug(name+ ' Everything will be alright!');
+    	}
+
+    
+    	if(z==false && abs>=3 && rec==false){
+        	System.debug(name+ ' We should have a meeting soon!');
+   	 	}
+    }
+}
+
+
+/*
+***Anonymous Window***
+attendanceControl.control('Laura', false, false, 4);
+*/
