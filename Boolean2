@@ -1,0 +1,27 @@
+Boolean isover500k = False;
+Boolean isITCompany = True;
+
+System.debug('AND >'+isover500k+' - '+isITCompany + ' ======> '+(isover500k&&isITCompany) );
+System.debug('OR >'+isover500k+' - '+isITCompany + ' ======> '+(isover500k||isITCompany) );
+
+
+if(isover500k&&isITCompany){
+    // TT 
+    System.debug('Şirket hem IT şirketi hem de geliri 500k$ üzerinde....');
+} else {
+    
+    // T F 
+    // F T
+    // F F
+    System.debug('Şirket ya IT şirketi değil yada Geliri 500k$ üstünde değil. Yada hiçi biri değil.');
+}
+
+if(isover500k||isITCompany){
+    // T F
+    // F T
+    // T T
+    System.debug('Şirket ya IT şirketi yada Geliri 500k$ üzeri yada 2 si birden....');
+} else {
+    // F F 
+    System.debug('Şirket ne IT şirketi ne de 500k$ üstünde geliri var. ');
+}
