@@ -1,0 +1,17 @@
+@isTest
+public class HelloApexTest {
+    
+    @isTest
+    public static void helloTest1(){
+        String actual=HelloApex.msg('test');
+        System.assertEquals('TEST Hello Apex', actual);
+        
+    }
+    
+    @isTest
+    public static void helloTest2(){
+        String actual=HelloApex.msg('test');
+        System.assertNotEquals('test', actual);
+        
+    }
+}
