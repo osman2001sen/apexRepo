@@ -1,0 +1,8 @@
+Account testAccount = [SELECT Id, Name
+                 	  FROM Account WHERE Name = 'Montana Inc.' LIMIT 1];
+    
+testAccount.Rating = 'Hot';
+testAccount.AnnualRevenue = 150000;
+testAccount.Description='This is my most up-to-date account.';
+
+upsert testAccount;
