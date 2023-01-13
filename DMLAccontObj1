@@ -1,0 +1,6 @@
+Account testAccount = New Account(Name='Montana Inc.', Phone='123456987', Website='www.montanainc.com', 
+                         Description='This is my account info.', Industry='IT', AnnualRevenue=100000);
+
+//System.debug(testAccount);
+
+insert testAccount;
