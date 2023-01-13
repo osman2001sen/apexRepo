@@ -1,0 +1,6 @@
+Account testAccount = [SELECT Id, isDeleted 
+                        FROM Account
+                        WHERE Id='001Dn00000BYhOrIAL' AND isDeleted=true ALL ROWS];
+
+
+undelete testAccount;
