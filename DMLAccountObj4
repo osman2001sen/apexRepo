@@ -1,0 +1,4 @@
+Account testAccount = [SELECT Id
+                 	    FROM Account WHERE Id='001Dn00000BYhOrIAL'];
+
+delete testAccount;
