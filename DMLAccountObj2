@@ -1,0 +1,10 @@
+Account testAccount = [SELECT Id, Name, Phone, Website, Industry, AnnualRevenue, Description 
+                 	FROM Account WHERE Name = 'Montana Inc.' LIMIT 1];
+    
+//System.debug(testAccount);
+
+testAccount.Website='www.mynewwebsite.com';
+testAccount.Description='This is my updated account.';
+testAccount.Industry='Consulting';
+
+update testAccount;
