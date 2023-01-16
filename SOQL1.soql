@@ -1,0 +1,13 @@
+//FIRST WAY
+List<Lead> multiLead = New List<Lead>();
+multiLead=[SELECT Id, FirstName, LastName, Title, Phone, Email, Company FROM Lead];
+
+//SECOND WAY
+List<Lead> multiLead = [SELECT Id, FirstName, LastName, Title, Phone, 
+                        Email, Company FROM Lead];
+
+for(Lead singleLead:multiLead){
+    System.debug(singleLead.FirstName);
+    System.debug(singleLead.LastName);
+    System.debug('**********************');
+}
