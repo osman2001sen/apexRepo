@@ -1,0 +1,8 @@
+List<Lead> multiLead = [SELECT Id, FirstName, LastName, Title, Phone, 
+                        Email, Company FROM Lead];
+
+for(Lead singleLead:multiLead){
+    System.debug(singleLead.Company);
+    System.debug(singleLead.Phone);
+    System.debug('============================');
+}
