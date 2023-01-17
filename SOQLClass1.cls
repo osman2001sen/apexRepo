@@ -1,0 +1,15 @@
+public class leadApex {
+    
+        public static void getLead(){
+            List<Lead> multiLead = [SELECT Id, FirstName, LastName, Title, Phone, 
+                                   Email, Company FROM Lead];
+    
+        for(Lead singleLead:multiLead){
+                System.debug(singleLead.Company);
+                System.debug(singleLead.Phone);
+                System.debug('============================');
+            }
+        }
+    }
+    
+    //leadApex.getLead(); (Anonymous window)
