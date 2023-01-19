@@ -1,0 +1,3 @@
+SELECT Id, FirstName, LastName, Title, Company, City, State, Country, Phone, Status 
+FROM Lead 
+WHERE Status LIKE 'Working%' AND Title LIKE 'VP%'
