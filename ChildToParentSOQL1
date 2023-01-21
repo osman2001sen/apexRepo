@@ -1,0 +1,5 @@
+//Child to Parent Query for STANDARD OBJECTS
+
+SELECT Id, FirstName, LastName, Phone, Title, Email, Department, 
+Account.Name 
+FROM Contact 
