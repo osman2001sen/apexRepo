@@ -1,0 +1,5 @@
+//Child to Parent SOQL Query for CUSTOM OBJECTS
+
+SELECT Id, Name, CreatedDate, Course__c,
+Course__r.Name
+FROM Lesson__c
