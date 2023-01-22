@@ -1,0 +1,1 @@
+SELECT Id, Name, CreatedDate, (SELECT Id, Name, CreatedDate FROM Lessons__r) FROM Course__c
