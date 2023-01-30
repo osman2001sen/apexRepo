@@ -1,0 +1,23 @@
+<apex:page >
+
+<script> 
+function changeFont(input,textid){
+
+if(input.checked){
+    document.getElementById(textid).style.fontWeight="bold";
+} else {
+ document.getElementById(textid).style.fontWeight="normal";
+}
+}
+</script> 
+
+<apex:outputPanel layout="block">
+    <label for="checkB"> Click this to change text font </label>
+    <input id="checkb" type="checkbox" onClick="changeFont(this,'{!$Component.thefont}');" />     
+</apex:outputPanel>
+
+<apex:outputPanel id="thefont" layout="block">
+Hello Visualforce and JS Example...
+</apex:outputPanel>
+
+</apex:page>
