@@ -1,0 +1,19 @@
+Integer x=10;
+
+switch on x{
+    when 1{
+        System.debug('x is 1');
+    }
+    when 2{
+        System.debug('x is 2');
+    }
+    when 3{
+        System.debug('x is 3');
+    }
+    when 4,5,6{
+	System.debug('x is 4,5 or 6');
+    }
+    when 10{
+        System.debug('x is 10');
+    }
+}
