@@ -1,0 +1,370 @@
+@isTest                                        //***FULL USER MODE'DA YAZILMIS TEST CLASS***
+public class AccountHandlerTest {   
+    
+    @isTest
+    public static void addStudenttoCohort_TEST1(){  // POSTIVE BEHAVIOR , SINGLE ACCOUNT, MULTI CONTACT
+        // Preapare Data
+        
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+        Boolean result = AccountHandler.addStudenttoCohort('TEST COHORT',multiContact);
+        
+        
+        // Test and Evaluate
+         
+        List<Contact> actual = [SELECT Id, Name, accountid, Account.Name FROM Contact];
+        
+        Account singleAcc = [SELECT id, Name FROM Account LIMIT 1];
+        
+        System.assertEquals(true, result);
+        
+        System.assertEquals(200, actual.size());  
+        
+        System.assertNotEquals(null, actual.get(0).accountid);  // TEST 1 STUDENT 1  
+          
+        System.assertEquals(singleAcc.id, actual.get(0).accountid); 
+        
+        System.assertEquals('TEST COHORT', singleAcc.Name);
+        
+        
+    }
+    
+    
+    
+    @isTest
+    public static void addStudenttoCohort_TEST2(){  // NEGATIVE BEHAVIOUR
+        
+           // Preapare Data
+        
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            // singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+        Boolean result=AccountHandler.addStudenttoCohort('TEST COHORT',multiContact);
+        
+        
+        // Test and Evaluate
+         
+        List<Contact> testcontact = [SELECT Id, Name, accountid, Account.Name FROM Contact];
+        
+        List<Account> testAcc = [SELECT id, Name FROM Account LIMIT 1];
+        
+        System.debug(testAcc);
+        System.debug(testcontact);
+        
+        System.assertEquals(false, result); // contact there is no last name ( Required ) 
+        System.assertEquals(0, testAcc.size());
+        
+        System.assertEquals(0, testcontact.size());
+        
+    }
+    
+    
+     @isTest
+    public static void addStudenttoCohort_TEST3(){  // NEGATIVE BEHAVIOUR
+    
+          
+           // Preapare Data
+        
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+        Boolean result=AccountHandler.addStudenttoCohort('',multiContact);
+        
+        
+        // Test and Evaluate
+         
+        List<Contact> testcontact = [SELECT Id, Name, accountid, Account.Name FROM Contact];
+        
+        List<Account> testAcc = [SELECT id, Name FROM Account LIMIT 1];
+        
+        System.debug(testAcc);
+        System.debug(testcontact);
+        
+        System.assertEquals(false, result); // account there is no name ( Required ) 
+        System.assertEquals(0, testAcc.size());
+        
+        System.assertEquals(0, testcontact.size());
+        
+    
+    }
+    
+    
+    @isTest
+    public static void addStudenttoCohort_TEST4(){  // UnAuthorized USER TEST
+    
+        // Prepare Data
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+         // Unauthorized User....
+     
+        // Create a unique UserName
+        String uniqueUserName = 'alexTestStandard' + DateTime.now().getTime() + '@cw.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Minimum Access - Salesforce'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+        Boolean result;
+        
+        
+        System.runAs(u) {   // alexTestStandard ------ @cw.com // Minimum Access - Salesforce   // no account + no contact acc
+              // The following code runs as user 'u'
+              System.debug('Current User: ' + UserInfo.getUserName());
+              System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
+              result= AccountHandler.addStudenttoCohort('UnAuthorized Account TEST',multiContact);
+            
+            System.debug(result);  // FALSE
+            
+           
+            
+          }  // alexTestStandard ------ @cw.com 
+        
+
+			 // Test and Evaluate
+		System.assertEquals(false, result);
+    }
+        
+        
+      
+        
+     
+    
+       @isTest
+    public static void addStudenttoCohort_TEST5(){  // Authorized USER TEST
+    
+        // Prepare Data
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+         // Unauthorized User....
+     
+        // Create a unique UserName
+        String uniqueUserName = 'alexTestStandard' + DateTime.now().getTime() + '@cw.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+        Boolean result;
+        
+        
+        System.runAs(u) {   // alexTestStandard ------ @cw.com // Standard User   // account + contact auth
+              // The following code runs as user 'u'
+              System.debug('Current User: ' + UserInfo.getUserName());
+              System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
+              result= AccountHandler.addStudenttoCohort('UnAuthorized Account TEST',multiContact);
+            
+            System.debug(result);  // TRUE
+            
+           
+            
+          }  // alexTestStandard ------ @cw.com 
+        
+
+			 // Test and Evaluate
+			 System.assertEquals(true, result);          
+    }
+    
+    
+    
+     @isTest
+    public static void addStudenttoCohort_TEST6(){  // UnAuthorized USER TEST
+    
+        // Prepare Data
+        
+        
+         List<Account> multiAcc = New List<Account>();
+        
+        for(Integer x=1;x<=200;x++){
+            
+            Account singleAcc = New Account();
+            
+            singleAcc.Name='TEST Acc '+ x;
+            multiAcc.add(singleAcc);
+            
+        }
+        
+         // Unauthorized User....
+     
+        // Create a unique UserName
+        String uniqueUserName = 'alexTestStandard' + DateTime.now().getTime() + '@cw.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Minimum Access - Salesforce'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+              
+        
+          // Test and Evaluate
+        
+        
+        System.runAs(u) {   // alexTestStandard ------ @cw.com // Minimum Access - Salesforce   // no account + no contact acc
+              // The following code runs as user 'u'
+              System.debug('Current User: ' + UserInfo.getUserName());
+              System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
+             AccountHandler.createUpperCase(multiAcc);
+            
+            
+          }  // alexTestStandard ------ @cw.com 
+        
+        
+        List<Account> testAcc = [SELECT id, Name FROM Account];
+        
+        
+        System.assertEquals(0, testAcc.size());
+    }
+        
+     
+    
+    
+        @isTest
+    public static void addStudenttoCohort_TEST7(){  // UnAuthorized USER TEST
+    
+        // Prepare Data
+        
+        
+         List<Account> multiAcc = New List<Account>();
+        
+        for(Integer x=1;x<=200;x++){
+            
+            Account singleAcc = New Account();
+            
+            singleAcc.Name='TEST Acc '+ x;
+            multiAcc.add(singleAcc);
+            
+        }
+        
+         // Unauthorized User....
+     
+        // Create a unique UserName
+        String uniqueUserName = 'alexTestStandard' + DateTime.now().getTime() + '@cw.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+              
+        
+          // Test and Evaluate
+        
+        
+        System.runAs(u) {   // alexTestStandard ------ @cw.com // Standard User   //  account contact acc
+              // The following code runs as user 'u'
+              System.debug('Current User: ' + UserInfo.getUserName());
+              System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
+             AccountHandler.createUpperCase(multiAcc);
+            
+          }  // alexTestStandard ------ @cw.com 
+        
+        
+          List<Account> testAcc = [SELECT id, Name FROM Account];
+        
+        
+        System.assertEquals(200, testAcc.size());
+        
+    }
+       
+  
+    // Custom : Min Access Acc Cont
+    
+     @isTest
+    public static void addStudenttoCohort_TEST8(){  //  HALF Authorized USER TEST
+    
+        // Prepare Data
+        List<Contact> multiContact = New List<Contact>();
+        
+        for(Integer num=1;num<=200;num++){
+            Contact singleContact= New Contact();
+            singleContact.FirstName='TEST ' + num;
+            singleContact.LastName='STUDENT '+num;
+            
+			multiContact.add(singleContact);            
+        }
+        
+         // Unauthorized User....
+     
+        // Create a unique UserName
+        String uniqueUserName = 'alexTestStandard' + DateTime.now().getTime() + '@cw.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Custom : Min Access Acc Cont'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+        Boolean result;
+        
+        
+        System.runAs(u) {   // alexTestStandard ------ @cw.com // Custom : Min Access Acc Cont   // account + contact  ( contact phone, email no access FLS)
+              // The following code runs as user 'u'
+              System.debug('Current User: ' + UserInfo.getUserName());
+              System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
+              result= AccountHandler.addStudenttoCohort('HALF Authorized Account TEST',multiContact);
+            
+            System.debug(result);  // FALSE
+            
+          }  // alexTestStandard ------ @cw.com 
+        
+		// Test and Evaluate	 
+        System.assertEquals(false, result);
+
+          
+    }
+        
+       
+}
