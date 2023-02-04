@@ -1,0 +1,19 @@
+public class LeadBatch implements Database.Batchable<SObject> {
+    public Database.QueryLocator start(Database.BatchableContext BC){
+        String query= 'SELECT Id, Name FROM Opportunity';
+        return Database.getQueryLocator(query);
+    }
+    public void execute (Database.BatchableContext BC, List<Opportunity>oppList){
+        for (Opportunity op:oppList){
+            op.CloseDate=date.today()+30;
+        }
+        update oppList;
+    }
+    public void finish (Database.BatchableContext BC){
+    }
+}
+
+/*
+Anonymous Window
+Database.executeBatch(new LeadBatch());
+*/
