@@ -1,0 +1,11 @@
+<apex:page controller="Calculate">
+    <apex:form style="text-align:center; margin-top:50px">
+        <apex:inputText value="{!num1}"/>   				
+        <br/> <br/>
+        <apex:inputText  value="{!num2}"/> 
+        <br/> <br/>
+        <apex:commandButton value="SUM" style="background:magenta; width:100px; height:25px" action="{!sum}"/>
+        <br/> <br/>
+        <apex:outputText value="{!result}" style="background:yellow"/>   
+    </apex:form>
+</apex:page>
