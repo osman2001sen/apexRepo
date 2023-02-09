@@ -1,0 +1,50 @@
+<apex:page standardController="Opportunity" recordSetVar="multiOp" tabstyle="opportunity">
+  
+  <apex:form >
+      <apex:selectList value="{!filterid}" size="1">
+          <apex:actionSupport event="onchange" reRender="opp_table" />
+          <apex:selectOptions value="{!listviewoptions}" /> 
+      
+      
+      </apex:selectList>
+  
+  <apex:pageBlock >
+      <apex:pageBlockTable var="singleOp" value="{!multiOp}" id="opp_table">
+          <apex:column headerValue="Name">   
+          
+              <apex:inputField value="{!singleOp.Name}"/>
+          
+          </apex:column>
+          
+          
+          <apex:column value="{!singleOp.Amount}"/>
+          
+          
+          <apex:column headerValue="Close Date"> 
+          
+          <apex:inputField value="{!singleOp.CloseDate}"/>
+          </apex:column> 
+          
+          
+          <apex:column headerValue="Stage">
+              <apex:inputfield value="{!singleOp.StageName}"/>
+          </apex:column>
+          
+          
+      
+      </apex:pageBlockTable>
+      
+      <apex:pageBlockButtons >
+          <apex:commandButton value="⏮" action="{!first}"/>
+          <apex:commandButton value="◀️" action="{!previous}"/>
+          <apex:commandButton value="💾" action="{!quickSave}"/>
+          <apex:commandButton value="▶️" action="{!next}"/>
+          <apex:commandButton value="⏭️" action="{!last}"/>
+          
+          
+      
+      
+      </apex:pageBlockButtons>
+  </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page >
+
+<apex:includeScript value="{!$Resource.ChangeFont}"/>
+
+<apex:outputPanel layout="block">
+    <label for="checkB"> Click this to change text font </label>
+    <input id="checkb" type="checkbox" onClick="changeFont(this,'{!$Component.thefont}');" />    
+</apex:outputPanel>
+
+<apex:outputPanel id="thefont" layout="block">
+Hello Visualforce and JS Example...
+</apex:outputPanel>
+
+</apex:page>

@@ -1,0 +1,56 @@
+<apex:page controller="developerToolsController"  docType="html-5.0" lightningStylesheets="true">
+ How many : {!howMany}
+ 
+ <apex:form >
+ 
+     <apex:inputText value="{!prefix}" label="NamePref" id="NamePref"/>
+     <apex:input value="{!howMany}" label="How Many" id="totalCount" />
+     
+     <apex:commandButton value="Create" action="{!createAcc}"/>
+ 
+ </apex:form>
+   
+     
+  <apex:form >
+  
+        <apex:inputText value="{!searchTerm}" label="NamePref" id="NamePref"/>
+     
+         <apex:commandButton value="Search" action="{!searchAcc}"/>
+         <apex:commandButton value="Delete" action="{!deleteAcc}"/>
+  
+  </apex:form>
+ 
+ 
+ <apex:form >
+     <apex:pageBlock >
+     
+         <apex:pageblockTable var="singleAcc" value="{!multiAcc}">
+             <apex:column headerValue="Name">
+                 <apex:inputfield value="{!singleAcc.Name}"/>
+             
+             </apex:column>
+             
+              <apex:column headerValue="Phone">
+                 <apex:inputfield value="{!singleAcc.Phone}"/>
+             
+             </apex:column>            
+             
+             <apex:column headerValue="Industry">
+                 <apex:inputfield value="{!singleAcc.Industry}"/>
+             
+             </apex:column>     
+                     
+              <apex:column headerValue="Website">
+                 <apex:inputfield value="{!singleAcc.Website}"/>
+             
+             </apex:column>            
+         </apex:pageblockTable>
+         
+         <apex:pageblockButtons >
+         
+             <apex:commandButton value="Update" action="{!updateAcc}"/>
+         
+         </apex:pageblockButtons>
+     </apex:pageBlock>
+</apex:form> 
+</apex:page>

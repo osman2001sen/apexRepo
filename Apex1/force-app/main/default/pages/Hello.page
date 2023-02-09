@@ -1,0 +1,10 @@
+<apex:page controller="vfAccount" sidebar="false" showHeader="false" lightningStylesheets="true" docType="html-5.0">
+
+ 
+ <apex:form >
+  <apex:inputText value="{!accName}"/>
+  <apex:commandButton value="Create Account" action="{!create}"/>
+  
+ </apex:form>
+ 
+</apex:page>
