@@ -1,0 +1,9 @@
+<apex:page >
+    <apex:form style="text-align:center; margin-top:50px">
+        <apex:inputText /> 
+        <br/> <br/>
+        <apex:inputText /> 
+        <br/> <br/>
+        <apex:commandButton value="TEST" style="background:magenta; width:100px; height:25px"/>
+    </apex:form>
+</apex:page>
