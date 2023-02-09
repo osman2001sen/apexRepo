@@ -1,0 +1,5 @@
+<apex:page >
+    <apex:form>
+        <apex:commandButton value="TEST" style="background:magenta; width:200px; height:50px"/>
+    </apex:form>
+</apex:page>
