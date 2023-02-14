@@ -1,0 +1,46 @@
+<aura:component 
+                controller="accountServerController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   <aura:attribute name="singleAcc" type="Account" default="
+                                                             {
+                                                             
+                                                             'sobjectType':'Account',
+                                                             'Name':'',
+                                                             'Phone':'',
+                                                             'Website':''
+                                                             
+                                                            }
+                                                             
+                                                             " />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />
+    
+    <aura:attribute name="multiAcc" type="Account[]" />
+    
+    
+    
+    
+    <aura:attribute name="accid" type="string" />
+    <aura:attribute name="msg" type="string" />
+    
+     <lightning:input name="accountName" label="Enter Account Name" value="{!v.singleAcc.Name}"/>
+     <lightning:input name="accountPhone" label="Enter Account Phone" value="{!v.singleAcc.Phone}"/>
+     <lightning:input name="accountWeb" label="Enter Account Website" value="{!v.singleAcc.Website}"/>
+   
+     <lightning:button variant="brand" label="Create Account" onclick="{! c.accountcreateClientController }" />
+    
+    Created Account Id : {!v.accid} <br />
+    
+    Message : {!v.msg}
+    
+    <br />
+    
+    <hr />
+    {!v.multiAcc}
+
+	<aura:iteration var="single" items="{!v.multiAcc}" >
+        {!single.Name} - {!single.Website} - {!single.Id}  <br />
+    </aura:iteration>
+    
+   
+</aura:component>
