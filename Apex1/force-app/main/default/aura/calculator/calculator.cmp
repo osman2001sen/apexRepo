@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />
+    
+    <aura:attribute name="xnumber" type="decimal"  />
+    <aura:attribute name="ynumber" type="decimal"  />
+    <aura:attribute name="result" type="decimal"   />
+    <aura:attribute name="process" type="string"   />
+    
+    <aura:attribute name="isCalcOpen" type="boolean" default="false"/>
+    
+    <aura:attribute name="buttonText" type="string" default="SHOW"/>
+    
+    
+    
+    <lightning:button label="{!v.buttonText}" onclick="{! c.calculatorOpenClose }"/> 
+    
+    
+  <aura:if isTrue="{!v.isCalcOpen}">
+     
+        <lightning:card variant="Narrow" title="Calculator AURA" iconName="utility:einstein" footer="{!v.result}">
+        <aura:set attribute="actions">
+            <lightning:button iconName="utility:add" onclick="{! c.sum }"/>  
+            <lightning:button iconName="utility:dash" onclick="{! c.sub }"/> 
+            <lightning:button iconName="utility:close" onclick="{! c.mul }"/> 
+            <lightning:button iconName="utility:italic" onclick="{! c.div }"/> 
+  
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+           
+              <lightning:input type="number" name="xnumberinput" 
+                     label="Enter the X Value" value="{!v.xnumber}"  
+                     formatter="decimal" step="0.01"/>
+    
+    			<lightning:input type="number" name="ynumberinput" 
+                     label="Enter the Y Value" value="{!v.ynumber}"  
+                     formatter="decimal" step="0.01"/>
+        </p>
+    </lightning:card>    
+ 
+    <!-- <aura:set attribute="else">
+    
+    </aura:set>  -->
+  </aura:if> 
+    
+
+</aura:component>

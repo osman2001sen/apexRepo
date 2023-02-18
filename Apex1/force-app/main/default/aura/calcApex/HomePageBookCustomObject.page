@@ -1,0 +1,22 @@
+<apex:page controller="bookClass">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable var="singleRecord" value="{!BookRecords}">
+                <apex:column value="{!singleRecord.Name}"/>
+                <apex:column>
+                    <apex:commandLink action="{!delMethod}" value="Delete">
+                        <apex:param value="{!singleRecord.Id}" name="delId"/>
+                    </apex:commandLink>
+                    <br/>
+                    <apex:commandLink action="{!showMethod}" value="Show">
+                        <apex:param value="{!singleRecord.Id}" name="showId"/>
+                    </apex:commandLink>
+                     <br/>
+                    <apex:commandLink action="{!showMethod}" value="Update">
+                        <apex:param value="{!singleRecord.Id}" name="showId"/>
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-14-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card  variant="Narrow"  title={cardText.title} icon-name="standard:account">
+        
+        <lightning-button-icon  icon-name="utility:down" 
+        variant="border-filled" 
+        alternative-text="Show More" 
+        slot="actions" onclick={titleChangeHandler}>
+        </lightning-button-icon>
+
+        <p class="slds-p-horizontal_small">{cardText.body}</p>
+        <p slot="footer">{cardText.footer}</p>
+    </lightning-card>
+</template>

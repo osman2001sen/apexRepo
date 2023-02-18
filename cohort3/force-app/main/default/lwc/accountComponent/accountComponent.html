@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-15-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+
+<template>
+    <lightning-card  variant="Narrow"  title="Account Component" icon-name="standard:account">
+      <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+      <p class="slds-p-horizontal_small">
+  
+        <lightning-input type="text" label="Enter some text" value={searchText}
+        onchange={textChangeHandler}></lightning-input>
+  
+  
+        <template if:true={multiaccounts}>
+  
+         <lightning-datatable
+          key-field="Id"  
+          data={multiaccounts}
+          columns={columns}>
+        </lightning-datatable>    
+        
+        </template>
+  
+      </p>
+      <p slot="footer">Last 10 Accounts</p>
+  </lightning-card>
+  </template>

@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:iteration var="item" items="alex, victor, sergio, taco, eric, nec">                          
+        <p> {!item} </p> <br/>                   
+    </aura:iteration>
+
+</aura:component>
