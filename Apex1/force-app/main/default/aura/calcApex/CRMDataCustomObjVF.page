@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-22-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page controller="crmExtractor">
+    <apex:form >
+        <apex:commandButton value="Bring Book Records" action="{!getBookList}" style="background:pink; color:black; width:130px; height:30px"/>
+        <apex:pageBlock >
+            <apex:pageBlockTable var="book" value="{!bookList}">
+                <apex:column value="{!book.Id}"/>
+                <apex:column value="{!book.Name}"/>	
+                <apex:column headerValue="Actions">
+                    <apex:commandButton value="Show Details" style="background:blue; color:white"/>
+                    <apex:commandButton value="Update" style="background:green; color:white"/>
+                    <apex:commandButton value="Delete" style="background:red; color:white"/>
+                </apex:column>	
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

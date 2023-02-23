@@ -6,16 +6,21 @@
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
-    <lightning-card  variant="Narrow"  title="Lead Registration" icon-name="standard:account">
-        <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
-        <p class="slds-p-horizontal_small">
-            <lightning-input type="text" label="First Name" name="fname" required></lightning-input>
-            <lightning-input type="text" label="Last Name" name="lname" required></lightning-input>
-            <lightning-input type="text" label="Phone" name="phone" required></lightning-input>
-            <lightning-input type="text" label="Email" name="email" required></lightning-input>
-            <lightning-input type="text" label="Country" name="country" required></lightning-input>
-            <lightning-input type="datetime" label="Info Session Date/Time" name="infodate" required></lightning-input>
-        </p>
-        <p slot="footer">Welcome to Clarusway</p>
+    <lightning-card  variant="Narrow"  title="Lead Registration" icon-name="standard:lead">
+      <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+      <p class="slds-p-horizontal_small">
+        <lightning-input  type="text" label="First Name" name="FirstName" value={singleLead.FirstName} required onchange={inputChangeHandler}></lightning-input>
+        <lightning-input  type="text" label="Last Name" name="LastName"  value={singleLead.LastName} required  onchange={inputChangeHandler}></lightning-input>
+        <lightning-input  type="text" label="Phone" name="Phone"  value={singleLead.Phone} required onchange={inputChangeHandler}></lightning-input>
+        <lightning-input  type="text" label="Email" name="Email"  value={singleLead.Email} required onchange={inputChangeHandler}></lightning-input>
+        <lightning-input  type="text" label="Country" name="Country"  value={singleLead.Country} required onchange={inputChangeHandler}></lightning-input>
+       
+        <lightning-input  type="datetime" name="Info_Session_Date_Time__c" value={singleLead.Info_Session_Date_Time__c} required label="Info Session Date/Time" onchange={inputChangeHandler}></lightning-input>
+
+
+      </p>
+      <p slot="footer">Welcome to Clarusway</p>
     </lightning-card>
+
+
 </template>
