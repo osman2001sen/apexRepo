@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-23-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page controller="gameController">
+    <apex:pageBlock>
+    	<apex:form style="text-align:center; margin-top:100px">
+            <h1>Enter a Number Between 0 and 100!</h1>
+            <br/> <br/>
+            <apex:inputText value="{!inputValue}"/> 
+            <br/> <br/>
+            <apex:commandButton value="Check Number" action="{!numberChecker}" style="background:purple; color:white"/>
+            <br/> <br/>
+            <apex:outputText style="color:green; font-size:16px" value="{!msgPositive}"/>
+            <apex:outputText style="color:red; font-size:16px" value="{!msgNegative}"/>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>
