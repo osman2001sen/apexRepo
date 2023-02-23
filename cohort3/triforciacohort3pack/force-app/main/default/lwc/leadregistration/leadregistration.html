@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-22-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card  variant="Narrow"  title="Lead Registration" icon-name="standard:account">
+        <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+        <p class="slds-p-horizontal_small">
+            <lightning-input type="text" label="First Name" name="fname" required></lightning-input>
+            <lightning-input type="text" label="Last Name" name="lname" required></lightning-input>
+            <lightning-input type="text" label="Phone" name="phone" required></lightning-input>
+            <lightning-input type="text" label="Email" name="email" required></lightning-input>
+            <lightning-input type="text" label="Country" name="country" required></lightning-input>
+            <lightning-input type="datetime" label="Info Session Date/Time" name="infodate" required></lightning-input>
+        </p>
+        <p slot="footer">Welcome to Clarusway</p>
+    </lightning-card>
+</template>
