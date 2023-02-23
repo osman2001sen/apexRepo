@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-22-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Account" recordSetVar="accounts">       
+    <title>Account Records</title>
+    <apex:pageBlock>
+        <apex:pageBlockTable var="acc" value="{!accounts}">        	  
+        	<apex:column value="{!acc.Name}"/>						
+            <apex:column value="{!acc.Phone}"/>				 
+            <apex:column value="{!acc.Site}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
