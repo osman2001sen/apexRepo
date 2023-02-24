@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-24-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page controller="compareNumbers">
+
+    <apex:pageBlock>
+
+        <apex:form style="text-align:center; margin-top:100px">
+            <h1>1st Number: </h1>
+            <br/>
+            <apex:inputText value="{!num1}"/> 
+            <br/> <br/>
+            <h1>2nd Number: </h1>
+            <br/>
+            <apex:inputText value="{!num2}"/> 
+            <br/> <br/>
+            <apex:commandButton value="Compare Numbers" action="{!compare}" style="background:purple; color:white"/>
+            <br/> <br/>
+            <apex:outputText style="color:green; font-size:20px" value="{!result}"/>
+            <apex:outputText style="color:red; font-size:16px" value="{!err}"/>
+        </apex:form>
+
+    </apex:pageBlock>
+
+</apex:page>
