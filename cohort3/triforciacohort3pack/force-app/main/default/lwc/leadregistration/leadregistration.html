@@ -2,25 +2,110 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 02-22-2023
+  @last modified on  : 02-24-2023
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
-    <lightning-card  variant="Narrow"  title="Lead Registration" icon-name="standard:lead">
-      <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
-      <p class="slds-p-horizontal_small">
-        <lightning-input  type="text" label="First Name" name="FirstName" value={singleLead.FirstName} required onchange={inputChangeHandler}></lightning-input>
-        <lightning-input  type="text" label="Last Name" name="LastName"  value={singleLead.LastName} required  onchange={inputChangeHandler}></lightning-input>
-        <lightning-input  type="text" label="Phone" name="Phone"  value={singleLead.Phone} required onchange={inputChangeHandler}></lightning-input>
-        <lightning-input  type="text" label="Email" name="Email"  value={singleLead.Email} required onchange={inputChangeHandler}></lightning-input>
-        <lightning-input  type="text" label="Country" name="Country"  value={singleLead.Country} required onchange={inputChangeHandler}></lightning-input>
-       
-        <lightning-input  type="datetime" name="Info_Session_Date_Time__c" value={singleLead.Info_Session_Date_Time__c} required label="Info Session Date/Time" onchange={inputChangeHandler}></lightning-input>
 
 
-      </p>
-      <p slot="footer">Welcome to Clarusway</p>
+
+  <template if:false={isLeadSent}>
+
+
+      <lightning-card  variant="Narrow"  title="Course Registration" icon-name="standard:lead">
+        <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+        
+        
+        <div class="slds-p-horizontal_small">
+
+
+
+
+
+
+
+          <lightning-record-edit-form
+          object-api-name={objectApiName}
+          record-id={recordId}
+          
+      >
+      <lightning-input-field field-name={name}> </lightning-input-field>
+      <lightning-input-field field-name={email}> </lightning-input-field>
+      <lightning-input-field field-name={phone}> </lightning-input-field>
+      <lightning-input-field field-name={address}> </lightning-input-field>
+      
+      <lightning-input-field field-name={info}> </lightning-input-field>
+
+
+      <div class="slds-hidden">
+        <lightning-input-field field-name={company} value={companyName}> </lightning-input-field>
+        <lightning-input-field field-name={interested} value={value}> </lightning-input-field>
+      </div>
+
+
+      <lightning-combobox
+      name="progress"
+      label="Status"
+      value={value}
+      placeholder="Select Progress"
+      options={options}
+      onchange={handleChange} ></lightning-combobox>
+
+
+
+
+
+          <div class="slds-var-m-top_medium">
+              <lightning-button variant="brand" type="submit" label="Save" onclick={clickhandler}>
+              </lightning-button>
+          </div>
+      </lightning-record-edit-form>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <p slot="footer"> course id : {value} course name : {companyName} Start Date : {startDate}</p>
     </lightning-card>
+
+
+</template>
+
+
+
+<template if:true={isLeadSent}>
+
+  <lightning-card  variant="Narrow"  title="Thank you" icon-name="standard:account">
+    <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+    <p class="slds-p-horizontal_small">Thank you for regitration. One of our Representative will contact with you as soon as possible</p>
+    <p slot="footer">Card Footer</p>
+  </lightning-card>
+
+</template>
+
+
+
+
+<template if:true={loading}>
+
+  <div class="exampleHolder">
+    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+</div>
+
+
+</template>
+
 
 
 </template>

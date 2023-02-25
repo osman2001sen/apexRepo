@@ -1,54 +1,126 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,api,track } from 'lwc';
 
-export default class Leadregistration extends LightningElement {
-
-
-singleLead={
-  FirstName:'',
-  LastName:'',
-  Phone:'',
-  Email:'',
-  Country:'',
-  Info_Session_Date_Time__c:null
-};
-//  Interested_Path__c, Info_Session_Date_Time__c, LastName, FirstName, Country, Email, Phone
+import NAME from '@salesforce/schema/Lead.Name';
+import EMAIL from '@salesforce/schema/Lead.Email';
+import PHONE from '@salesforce/schema/Lead.Phone';
+import ADDRESS from '@salesforce/schema/Lead.Address';
+import COMPANY from '@salesforce/schema/Lead.Company';
+import INFO from '@salesforce/schema/Lead.Info_Session_Date_Time__c';
+import INTERESTED from '@salesforce/schema/Lead.Interested_Path__c';
 
 
-inputChangeHandler(event){
 
-  console.log(event.target.name);
-  console.log(event.target.value);
-
-  
-  switch(event.target.name) {
-    case 'FirstName':
-      this.singleLead.FirstName=event.target.value;
-      break;
-    case 'LastName':
-      this.singleLead.LastName=event.target.value;
-      break;
-    case 'Phone':
-      this.singleLead.Phone=event.target.value;
-      break;
-    case 'Email':
-      this.singleLead.Email=event.target.value;
-      break;
-    case 'Country':
-      this.singleLead.Country=event.target.value;
-      break;
-    case 'Info_Session_Date_Time__c':
-      this.singleLead.Info_Session_Date_Time__c=event.target.value;
-      break;
-  
-    default:
-      // code block
-      console.log('default....');
-  }
-
-  console.log(JSON.parse(JSON.stringify(this.singleLead)));
+import retrieve from '@salesforce/apex/UIcourseController.retrieve';
 
 
-}
 
 
+export default class NewLeadRegistration extends LightningElement {
+
+
+ // Expose a field to make it available in the template
+ fields = [
+NAME,
+EMAIL,
+PHONE,
+ADDRESS,
+COMPANY,
+INFO,
+INTERESTED
+ ];
+
+
+ name=NAME;
+ email=EMAIL;
+ phone=PHONE;
+ address=ADDRESS;
+ company=COMPANY;
+ info=INFO;
+ interested=INTERESTED;
+
+
+isLeadSent=false;
+
+loading=false;
+
+value = 'inProgress';
+companyName='xx';
+
+/*
+options = [
+  { label: 'New', value: 'new' },
+  { label: 'In Progress', value: 'inProgress' },
+  { label: 'Finished', value: 'finished' },
+];
+
+
+*/
+
+@track options = [];
+startDate;
+
+
+ // Flexipage provides recordId and objectApiName
+ @api recordId;
+ @api objectApiName='Lead';
+
+
+
+ clickhandler(){
+  this.loading=true;
+
+setTimeout(() => {
+  this.isLeadSent=true;
+  this.loading=false;
+}, 3000);
+ }
+
+
+
+
+ handleChange(event) {
+     this.value = event.detail.value;
+
+     // console.log(JSON.parse(JSON.stringify(event.detail)));
+
+    
+     let selectedOption=this.options.filter(option=>option.value==event.detail.value);
+     
+    console.log(JSON.parse(JSON.stringify(selectedOption)));
+
+     this.companyName=selectedOption[0].label;
+     this.startDate = selectedOption[0].StartDate;
+
+ }
+ 
+
+
+ connectedCallback(){
+  retrieve()
+  .then(multicourse=>{
+
+    multicourse.forEach(course => {
+      
+      this.options=[
+        ...this.options,
+
+        { 
+          label: course.Name, 
+          value: course.Id,
+          StartDate:course.Start__c
+      
+        }
+      ];
+
+
+    });
+
+  })
+  .catch(err=>{
+
+    console.log(err);
+  });
+
+
+ }
 }
