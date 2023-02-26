@@ -1,0 +1,11 @@
+Set<String> colors = New Set <String>();
+colors.add('red');
+colors.add('green');
+colors.add('blue');
+colors.add('yellow');
+System.debug(colors);      
+System.debug('Set size : '+colors.size());
+colors.remove('blue');
+System.debug(colors);
+colors.clear();
+System.debug(colors);
