@@ -1,0 +1,15 @@
+List<string> cars = New List <string>();
+cars.add('Ferrari');
+cars.add('Volvo');
+cars.add('Porsche');
+cars.add('Audi');
+System.debug(cars);
+System.debug('List size: '+cars.size());
+System.debug('Second car model: '+cars.get(1));
+System.debug('My favorite car\'s ranking is: '+cars.indexof('Audi'));
+cars.set(1, 'Mercedes');
+System.debug(cars);
+cars.remove(1);
+System.debug(cars);
+cars.clear();
+System.debug(cars);
