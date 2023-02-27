@@ -9,10 +9,7 @@ import INFO from '@salesforce/schema/Lead.Info_Session_Date_Time__c';
 import INTERESTED from '@salesforce/schema/Lead.Interested_Path__c';
 
 
-
 import retrieve from '@salesforce/apex/UIcourseController.retrieve';
-
-
 
 
 export default class NewLeadRegistration extends LightningElement {
@@ -37,7 +34,6 @@ INTERESTED
  company=COMPANY;
  info=INFO;
  interested=INTERESTED;
-
 
 isLeadSent=false;
 
@@ -76,9 +72,7 @@ setTimeout(() => {
  }
 
 
-
-
- handleChange(event) {
+handleChange(event) {
      this.value = event.detail.value;
 
      // console.log(JSON.parse(JSON.stringify(event.detail)));
@@ -92,10 +86,8 @@ setTimeout(() => {
      this.startDate = selectedOption[0].StartDate;
 
  }
- 
 
-
- connectedCallback(){
+connectedCallback(){
   retrieve()
   .then(multicourse=>{
 
@@ -117,10 +109,8 @@ setTimeout(() => {
 
   })
   .catch(err=>{
-
     console.log(err);
   });
-
 
  }
 }
