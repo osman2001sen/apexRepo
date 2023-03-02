@@ -2,14 +2,13 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 02-28-2023
+ * @last modified on  : 03-01-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class GuestUserController {
     public GuestUserController() {
 
     }
-
 
     @AuraEnabled
     public static string createLead(Lead singleLead, String infoDate){
@@ -66,6 +65,7 @@ public with sharing class GuestUserController {
         return cm.id;
     }
     
+
 
     @AuraEnabled(cacheable=true)
     public static List<Course__c> retrieveCourse(){

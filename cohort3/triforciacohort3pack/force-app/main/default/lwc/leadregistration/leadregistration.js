@@ -121,7 +121,6 @@ utm_referer=clarusway
 @track options = [];
 startDate;
 
-
  // Flexipage provides recordId and objectApiName
  @api recordId;  // lead ID 
  @api objectApiName='Lead';
@@ -162,14 +161,12 @@ console.log('lead created successfully');
   console.log('Lead Error : '+ err);
 });
 
-
 let campMember={
   LeadId:this.recordId,
   CampaignId:this.campaign.Id,
   Status:'Sent'
 
 }
-
 
 await createCampaignMember({
   cm:campMember
@@ -186,10 +183,9 @@ await createCampaignMember({
 this.loading=false;
 this.isLeadSent=true;
 
+ }
 
-}
-
-handleChange(event) {
+ handleChange(event) {
      this.value = event.detail.value;
 
      // console.log(JSON.parse(JSON.stringify(event.detail)));
@@ -207,9 +203,19 @@ handleChange(event) {
 
      this.singleLead.Interested_Path__c=this.value;  // course id...
 
- }
 
+ }
+ 
  async connectedCallback(){
+
+
+this.utm_source=this.utm_source.replace('%20',' ');
+this.utm_medium=this.utm_medium.replace('%20',' ');
+this.utm_campaign=this.utm_campaign.replace('%20',' ');
+this.utm_id=this.utm_id.replace('%20',' ');
+this.utm_term=this.utm_term.replace('%20',' ');
+this.utm_content=this.utm_content.replace('%20',' ');
+this.utm_referer=this.utm_referer.replace('%20',' ');
 
   retrieveCourse()
   .then(multicourse=>{
@@ -236,7 +242,6 @@ handleChange(event) {
     console.log(err);
   });
 
-
   // utm_id
 
   await retrieveCampaign({
@@ -253,7 +258,6 @@ handleChange(event) {
     console.log(this.campaign.Name);
 
     console.log('adRecord objesi oluşturuluyor.....');
-
   })
   .catch(err=>{
     console.log('retrieveCampaign ERR : ');
@@ -289,13 +293,16 @@ await createAd({
   this.advertiseId=adId;
 
 
+
 })
 .catch(err=>{
   console.log('createAd : err '+ err);
 });
 
 
+
 this.singleLead.Ad__c=this.advertiseId;
+
 
  }   // connected callback end.....
 

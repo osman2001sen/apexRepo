@@ -2,7 +2,7 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 02-28-2023
+  @last modified on  : 03-01-2023
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
@@ -47,17 +47,15 @@
       options={options}
       onchange={handleChange} ></lightning-combobox>
 
-
           <div class="slds-var-m-top_medium">
               <lightning-button variant="brand" type="submit" label="Save" onclick={clickhandler}>
               </lightning-button>
           </div>
-
+     
         </div>
 
         <p slot="footer"> course id : {value} course name : {companyName} Start Date : {startDate}</p>
     </lightning-card>
-
 
 </template>
 
@@ -72,12 +70,12 @@
 
 </template>
 
-
 <template if:true={loading}>
 
   <div class="exampleHolder">
     <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 </div>
+
 
 </template>
 
