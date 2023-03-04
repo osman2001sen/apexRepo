@@ -41,4 +41,21 @@ export default class HelloLWCcomp extends LightningElement {
         return band;
     }
 
+    constructor(){
+        super();
+        console.log('Hello Constructor');
+    }
+
+    connectedCallback(){
+        console.log('Hello connectedCallback');
+    }
+
+    renderedCallback(){
+        console.log('Hello renderedCallback');
+    }
+
+    disconnectedCallback(){
+        console.log('Hello disconnectedCallback');
+    }
+
 }
