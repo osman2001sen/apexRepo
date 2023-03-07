@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-06-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+            key-field="Id"
+            data={accountsList.data}
+            columns={columns}
+            hide-checkbox-column="true"
+            show-row-number-column="true"
+            onrowaction={rowActionHandler}>
+        </lightning-datatable>
+    </div>
+</template>
