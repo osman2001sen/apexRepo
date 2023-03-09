@@ -5,7 +5,7 @@
  * @last modified on  : 03-09-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
-public class issAPI {
+public class ISSAPI {
 
     public static void position(){
 
