@@ -20,6 +20,9 @@
         <targetConfig targets="lightningCommunity__Default">
 
         <property type="String" name="calendlyLink"/>
+        <property type="String" name="leadId"/>
+        <property type="String" name="leadName"/>
+        <property type="String" name="leadEmail"/>
 
         </targetConfig>
 
