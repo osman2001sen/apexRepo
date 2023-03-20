@@ -47,7 +47,7 @@ global class ZoomWebService {
         
         String eventtype = eventMap.get('event').toString();
         
-        zoomlog__c zoomlog = New zoomlog__c();
+        OSNS1__zoomlog__c zoomlog = New OSNS1__zoomlog__c();
         zoomlog.body__c=req.requestBody.toString();
         zoomlog.event__c=eventtype; 
         
@@ -62,7 +62,7 @@ global class ZoomWebService {
                 
                 Id intId = Topic.split('\\$')[0];
                 
-                zoomlog__c createLog = New zoomlog__c();
+                OSNS1__zoomlog__c createLog = New OSNS1__zoomlog__c();
                 createLog.body__c=ZoomURL;
                 createLog.event__c=Topic; 
                 
@@ -80,7 +80,7 @@ global class ZoomWebService {
                 Datetime zoomTime= Datetime.valueOf(start_time); 
                 
                 if(String.valueOf(intId.getSObjectType())=='Interview__c'){
-                    Interview__c interview = New Interview__c();
+                    OSNS1__Interview__c interview = New OSNS1__Interview__c();
                     interview.id=intId;
                     interview.Meeting_URL__c=ZoomURL;
                     interview.Scheduled_DateTime__c=zoomTime;
@@ -106,7 +106,7 @@ global class ZoomWebService {
                 String encryptedToken ='';  
                 
                 
-                zoomlog__c zoomverify = New zoomlog__c();
+                OSNS1__zoomlog__c zoomverify = New OSNS1__zoomlog__c();
                 zoomverify.body__c=req.requestBody.toString();
                 zoomverify.event__c=reqApex.event; 
                 

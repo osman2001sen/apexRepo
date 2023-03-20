@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>v1</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>CW Implementation DEMO</label>
+    <navType>Standard</navType>
+    <tabs>standard-Campaign</tabs>
+    <tabs>Ad__c</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>Interview__c</tabs>
+    <tabs>Course__c</tabs>
+    <tabs>zoomlog__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>CW_Implementation_DEMO_UtilityBar</utilityBar>
+</CustomApplication>

@@ -3,10 +3,18 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "force-app",
+      "package": "triforciacohort3pack",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.0.0.1",
+      "default": false
+
     }
   ],
   "name": "triforciacohort3pack",
-  "namespace": "",
+  "namespace": "OSNS1",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "56.0"
 }
