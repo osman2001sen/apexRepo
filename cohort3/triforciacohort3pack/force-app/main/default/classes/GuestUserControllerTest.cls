@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 03-27-2023
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest
 public class GuestUserControllerTest {
     
@@ -13,7 +20,7 @@ public class GuestUserControllerTest {
         String infoDate = '2023-03-01T20:26:00.000Z';
         
         Test.startTest();
-        String leadId = GuestUserController.createLead(lead, infoDate);
+        String leadId = OSNS1.GuestUserController.createLead(lead, infoDate);
         Test.stopTest();
         
         Lead insertedLead = [SELECT Id, FirstName, LastName, Company, Email, Phone, Info_Session_Date_Time__c FROM Lead WHERE Id = :leadId];
@@ -34,7 +41,7 @@ public class GuestUserControllerTest {
         insert campaign;
         
         Test.startTest();
-        Campaign retrievedCampaign = GuestUserController.retrieveCampaign('Test');
+        Campaign retrievedCampaign = OSNS1.GuestUserController.retrieveCampaign('Test');
         Test.stopTest();
         
         System.assertEquals('Test Campaign', retrievedCampaign.Name);
@@ -64,7 +71,7 @@ public class GuestUserControllerTest {
         );
         
         Test.startTest();
-        String cmId = GuestUserController.createCampaignMember(cm);
+        String cmId = OSNS1.GuestUserController.createCampaignMember(cm);
         Test.stopTest();
         
         CampaignMember insertedCm = [SELECT Id, CampaignId, LeadId FROM CampaignMember WHERE Id = :cmId];
@@ -91,7 +98,7 @@ public class GuestUserControllerTest {
         );
         
         Test.startTest();
-        String adId = GuestUserController.createAd(ad);
+        String adId = OSNS1.GuestUserController.createAd(ad);
         Test.stopTest();
         
         Ad__c insertedAd = [SELECT Id, UTM_Campaign__c, UTM_Content__c, UTM_Referer__c, UTM_Medium__c, UTM_Source__c, UTM_Term__c, Campaign__c FROM Ad__c WHERE Id = :adId];
@@ -107,22 +114,22 @@ public class GuestUserControllerTest {
     
     @isTest
 static void testRetrieveCourse() {
-    Course__c course1 = new Course__c(
+    OSNS1__Course__c course1 = new OSNS1__Course__c(
         Name = 'Test Course 1',
-        Start__c = Date.today().addDays(1),
-        End__c = Date.today().addDays(8)
+        OSNS1__Start__c = Date.today().addDays(1),
+        OSNS1__End__c = Date.today().addDays(8)
     );
     insert course1;
     
-    Course__c course2 = new Course__c(
+    OSNS1__Course__c course2 = new OSNS1__Course__c(
         Name = 'Test Course 2',
-        Start__c = Date.today().addDays(2),
-        End__c = Date.today().addDays(9)
+        OSNS1__Start__c = Date.today().addDays(2),
+        OSNS1__End__c = Date.today().addDays(9)
     );
     insert course2;
     
     Test.startTest();
-    List<Course__c> courses = GuestUserController.retrieveCourse();
+    List<OSNS1__Course__c> courses = OSNS1.GuestUserController.retrieveCourse();
     Test.stopTest();
     
     System.assertEquals(2, courses.size());
@@ -148,7 +155,7 @@ static void testCreateLeadNegative() {
     Test.startTest();
     AuraHandledException auraException = null;
     try {
-        GuestUserController.createLead(lead, infoDate);
+        OSNS1.GuestUserController.createLead(lead, infoDate);
     } catch (AuraHandledException e) {
         auraException = e;
     }
@@ -166,26 +173,26 @@ static void testCreateLeadNegative() {
         insert testCampaign;
 
         // Create a test Ad record
-        Ad__c testAd = new Ad__c(
-            UTM_Campaign__c = 'Google 11111',
-            UTM_Content__c = 'Test Content',
-            UTM_Referer__c = 'Test Referer',
-            UTM_Medium__c = 'Test Medium',
-            UTM_Source__c = 'Test Source',
-            UTM_Term__c = 'Test Term',
-            Campaign__c = testCampaign.Id
+        OSNS1__Ad__c testAd = new OSNS1__Ad__c(
+            OSNS1__UTM_Campaign__c = 'Google 11111',
+            OSNS1__UTM_Content__c = 'Test Content',
+            OSNS1__UTM_Referer__c = 'Test Referer',
+            OSNS1__UTM_Medium__c = 'Test Medium',
+            OSNS1__UTM_Source__c = 'Test Source',
+            OSNS1__UTM_Term__c = 'Test Term',
+            OSNS1__Campaign__c = testCampaign.Id
         );
         
         // Insert the Ad record
         Test.startTest();
-        String adId = GuestUserController.createAd(testAd);
+        String adId = OSNS1.GuestUserController.createAd(testAd);
         Test.stopTest();
 
         // Retrieve the inserted Ad record
-        Ad__c insertedAd = [SELECT Id, UTM_Campaign__c, UTM_Content__c, UTM_Referer__c, UTM_Medium__c, UTM_Source__c, UTM_Term__c, Campaign__c FROM Ad__c WHERE Id = :adId];
+        OSNS1__Ad__c insertedAd = [SELECT Id, OSNS1__UTM_Campaign__c, OSNS1__UTM_Content__c, OSNS1__UTM_Referer__c, OSNS1__UTM_Medium__c, OSNS1__UTM_Source__c, OSNS1__UTM_Term__c, OSNS1__Campaign__c FROM OSNS1__Ad__c WHERE Id = :adId];
         
         // Verify that the Campaign__c field is the same as the Campaign record Id
-        System.assertEquals(testCampaign.Id, insertedAd.Campaign__c);
+        System.assertEquals(testCampaign.Id, insertedAd.OSNS1__Campaign__c);
     }
       @isTest
     static void testCreateCampaignMemberWithEmptyRequiredFields() {
@@ -197,7 +204,7 @@ static void testCreateLeadNegative() {
         String campmemberId ;
         String errmsg;
         try{
-            campmemberId = GuestUserController.createCampaignMember(cm);
+            campmemberId = OSNS1.GuestUserController.createCampaignMember(cm);
         } catch(Exception e){
             System.debug('Error : '+ e.getMessage());
             errmsg=e.getMessage();
