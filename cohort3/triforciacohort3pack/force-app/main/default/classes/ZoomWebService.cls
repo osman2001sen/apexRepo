@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-27-2023
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @restResource(urlMapping='/Zoom/Webhook/*')
 global class ZoomWebService {
     
