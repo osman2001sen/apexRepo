@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 03-27-2023
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @restResource(urlMapping='/Zoom/Webhook/*')
 global class ZoomWebService {
     
@@ -48,8 +55,8 @@ global class ZoomWebService {
         String eventtype = eventMap.get('event').toString();
         
         OSNS1__zoomlog__c zoomlog = New OSNS1__zoomlog__c();
-        zoomlog.body__c=req.requestBody.toString();
-        zoomlog.event__c=eventtype; 
+        zoomlog.OSNS1__body__c=req.requestBody.toString();
+        zoomlog.OSNS1__event__c=eventtype; 
         
         insert zoomlog;  
         
@@ -63,8 +70,8 @@ global class ZoomWebService {
                 Id intId = Topic.split('\\$')[0];
                 
                 OSNS1__zoomlog__c createLog = New OSNS1__zoomlog__c();
-                createLog.body__c=ZoomURL;
-                createLog.event__c=Topic; 
+                createLog.OSNS1__body__c=ZoomURL;
+                createLog.OSNS1__event__c=Topic; 
                 
                 insert createLog;  
                 
@@ -79,18 +86,15 @@ global class ZoomWebService {
                 
                 Datetime zoomTime= Datetime.valueOf(start_time); 
                 
-                if(String.valueOf(intId.getSObjectType())=='Interview__c'){
+                if(String.valueOf(intId.getSObjectType())=='OSNS1__Interview__c'){
                     OSNS1__Interview__c interview = New OSNS1__Interview__c();
                     interview.id=intId;
-                    interview.Meeting_URL__c=ZoomURL;
-                    interview.Scheduled_DateTime__c=zoomTime;
-                    interview.Status__c='Scheduled';
+                    interview.OSNS1__Meeting_URL__c=ZoomURL;
+                    interview.OSNS1__Scheduled_DateTime__c=zoomTime;
+                    interview.OSNS1__Status__c='Scheduled';
                     update interview;
                 }
-
-			
-				               
-                
+    
             }	
             when 'meeting.deleted' {		// when block 2
                 
@@ -107,8 +111,8 @@ global class ZoomWebService {
                 
                 
                 OSNS1__zoomlog__c zoomverify = New OSNS1__zoomlog__c();
-                zoomverify.body__c=req.requestBody.toString();
-                zoomverify.event__c=reqApex.event; 
+                zoomverify.OSNS1__body__c=req.requestBody.toString();
+                zoomverify.OSNS1__event__c=reqApex.event; 
                 
                 insert zoomverify; 
                 
@@ -126,16 +130,13 @@ global class ZoomWebService {
                 res.addHeader('Content-Type', 'application/json');
                 res.responseBody=Blob.valueOf(JSON.serialize(resData));
                 
-                
-                
             }
             when else {		  // default block, optional
                 
             }
-        }
+        }  
         
     }
-    
     
     global class reqData {
         global payload payload;
