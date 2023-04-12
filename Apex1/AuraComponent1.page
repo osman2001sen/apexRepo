@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-12-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component implements="force:appHostable,
+                            flexipage:availableForAllPageTypes,
+                            flexipage:availableForRecordHome,
+                            force:hasRecordId,
+                            forceCommunity:availableForAllPageTypes,
+                            force:lightningQuickAction" access="global" >
+    
+    
+    <lightning:card footer="Card Footer" title="Hello">
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            Card Body (custom component)
+        </p>
+    </lightning:card>
+    
+</aura:component>
