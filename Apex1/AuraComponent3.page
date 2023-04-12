@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-12-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component implements="force:appHostable,
+                            flexipage:availableForAllPageTypes,
+                            flexipage:availableForRecordHome,
+                            force:hasRecordId,
+                            forceCommunity:availableForAllPageTypes,
+                            force:lightningQuickAction" access="global" >
+    
+    <aura:attribute type="String" name="hellomsg" default="Hello Aura Class"/>    <!--Variable-->
+    
+    Aura Attribute : {!v.hellomsg}
+    
+</aura:component>
