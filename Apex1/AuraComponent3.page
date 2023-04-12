@@ -12,7 +12,7 @@
                             forceCommunity:availableForAllPageTypes,
                             force:lightningQuickAction" access="global" >
     
-    <aura:attribute type="String" name="hellomsg" default="Hello Aura Class"/>    <!--Variable-->
+    <aura:attribute type="String" name="hellomsg" default="Hello Aura Class"/>
     
     Aura Attribute : {!v.hellomsg}
     
