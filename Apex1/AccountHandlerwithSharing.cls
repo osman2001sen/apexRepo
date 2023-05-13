@@ -5,12 +5,12 @@
  * @last modified on  : 05-13-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
-public with sharing class AccountHandler {        //Sharing rules'a uy! Bitti. Bu kadar kolay. Başkalarının data'sı olayını çözdük.
+public with sharing class AccountHandler {        
     
     public static Boolean addStudenttoCohort(String CohortName,List<Contact> multiContact ){
         
         
-        if(CohortName==null || CohortName==''){          //Zorunlu alan check'leri başa koyduk. Zorunlu alanlar eksik gelirse, account da contact da oluşmayacak.
+        if(CohortName==null || CohortName==''){         
             return false;
         }
         
@@ -29,26 +29,21 @@ public with sharing class AccountHandler {        //Sharing rules'a uy! Bitti. B
         
         singleAccount.Name=CohortName; 
         
-        // Account ( OLS )    FLS Account.Name //Bunlar kontrol edilmeli. Ona göre insert yapılmalı. Field yapsak, obj'i de hallediyor burada.
-        
-        if(Schema.sObjectType.Account.fields.Name.isCreateable()){  //True ise yetki var. Insert.
+        if(Schema.sObjectType.Account.fields.Name.isCreateable()){ 
         
         	insert singleAccount;
             
             
         } else {
             
-            return false;   // NO AUTH to Account Name Field. No Authority to Create Contact.
+            return false;   
         }    
-        
         
         for(Contact loopcontact:multiContact){
             loopcontact.AccountId=singleAccount.id;
               
         }
         
-        
-        // Contact OLS - FLS FirstName LastName Email Phone //Bunlar kontrol edilmeli. Ona göre upsert yapılmalı.
         
         Integer flsPoint = 0;
         
@@ -73,14 +68,7 @@ public with sharing class AccountHandler {        //Sharing rules'a uy! Bitti. B
 		return true;        
     }
     
-    
-    
-    
-    
-    
-    public static void createUpperCase(List<Account> multiAcc){ // bulkification //bu hariç USER MODE'a uygun.
-        
-       //  Contact manager = [SELECT Id, Name FROM Contact WHERE Name LIKE '%manager%' WITH SECURITY_ENFORCED];
+    public static void createUpperCase(List<Account> multiAcc){
         
         for(Account acc:multiAcc){
             acc.name=acc.name.toUpperCase();
@@ -88,8 +76,5 @@ public with sharing class AccountHandler {        //Sharing rules'a uy! Bitti. B
         
         insert multiAcc;  
         
-    }
-    
-    
-    
+    }   
 }
