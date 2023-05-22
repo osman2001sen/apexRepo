@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-22-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Account">
+ 
+ <apex:detail />
+ 
+ <apex:pageBlock title="Account Details">
+ 
+     <apex:pageBlockSection title="Account Communication Details"> 
+         <p>{!Account.id}</p>
+         <p>{!Account.Name}</p>
+         <p>{!Account.Phone}</p>
+     
+     </apex:pageBlockSection>
+     
+     <apex:pageBlockSection title="Address Details"> 
+         <p>{!Account.BillingStreet}</p>
+     
+     </apex:pageBlockSection>
+     
+     <apex:pageBlockSection title="page block section 3"> 
+         <p> Section content is here... </p>
+     
+     </apex:pageBlockSection>
+     
+     <apex:pageBlockSection title="page block section 4"> 
+         <p> Section content is here... </p>
+     
+     </apex:pageBlockSection>
+ 
+ 
+ </apex:pageBlock>
+  
+</apex:page>
