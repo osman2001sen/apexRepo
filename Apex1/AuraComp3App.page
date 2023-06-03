@@ -1,0 +1,12 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-03-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:application extends='force:slds'>
+    
+    <c:calculator></c:calculator>
+	
+</aura:application>
