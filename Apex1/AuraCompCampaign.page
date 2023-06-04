@@ -1,0 +1,19 @@
+<!-- campaignInfo.cmp -->
+<aura:component controller="CampaignController">
+    <aura:attribute name="campaignId" type="String" />
+    <aura:attribute name="campaign" type="Campaign" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:if isTrue="{!not(empty(v.campaign))}">
+        <div class="slds-box slds-theme_default">
+            <h2>{!v.campaign.Name}</h2>
+            <p>Start Date: {!v.campaign.StartDate}</p>
+            <p>End Date: {!v.campaign.EndDate}</p>
+            <p>Status: {!v.campaign.Status}</p>
+            <!-- Add more campaign fields as needed -->
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!empty(v.campaign)}">
+        <p>No campaign found with the provided ID.</p>
+    </aura:if>
+</aura:component>
