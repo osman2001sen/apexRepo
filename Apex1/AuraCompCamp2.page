@@ -1,0 +1,20 @@
+<!-- campaignComponent.cmp -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="campaign" type="Campaign" />
+    <aura:attribute name="campaignMembers" type="CampaignMember[]" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <lightning:card title="{!v.campaign.Name}">
+        <lightning:layout>
+            <lightning:layoutItem size="6" padding="around-small">
+                <p>Status: {!v.campaign.Status}</p>
+                <p>Start Date: {!v.campaign.StartDate}</p>
+                <p>End Date: {!v.campaign.EndDate}</p>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" padding="around-small">
+                <p>Total Members: {!v.campaignMembers.length}</p>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>
