@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-18-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Account" extensions="CalculateOpportunity">
+ <h1> Account Details </h1> <br/>
+ {!Account.Id}  <br/>
+ {!Account.Name}  <br/>
+ {!Account.Phone}  <br/>
+ {!Account.Website}  <br/>
+ 
+ {!multiop}
+ 
+</apex:page>
