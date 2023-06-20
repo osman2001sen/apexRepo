@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-19-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Contact" extensions="ContactController">
+
+    <apex:form>
+        <apex:pageBlock title="Contact Information">
+            
+            <apex:pageBlockSection>
+                <apex:inputField value="{!Contact.FirstName}" label="First Name" />
+                <apex:inputField value="{!Contact.LastName}" label="Last Name" />
+                <apex:inputField value="{!Contact.Email}" label="Email" />
+                <apex:commandButton value="Save" action="{!saveContact}" />
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>
