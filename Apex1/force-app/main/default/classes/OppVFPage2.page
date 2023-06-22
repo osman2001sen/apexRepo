@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-22-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Opportunity" extensions="OpportunityExtension">
+   <apex:sectionHeader title="Opportunity Detail" subtitle="{!Opportunity.Name}"/>
+   <apex:form>
+      <apex:pageBlock title="Opportunity Information">
+         <apex:pageBlockSection columns="2">
+            <apex:outputField value="{!Opportunity.Name}"/>
+            <apex:outputField value="{!Opportunity.StageName}"/>
+            <apex:outputField value="{!Opportunity.CloseDate}"/>
+            <apex:outputField value="{!Opportunity.Amount}"/>
+            <apex:outputField value="{!Opportunity.Account.Name}"/>
+         </apex:pageBlockSection>
+         <apex:pageBlockButtons>
+            <apex:commandButton value="Update Stage" action="{!updateStage}" rerender="stageMessage"/>
+         </apex:pageBlockButtons>
+         <apex:outputPanel id="stageMessage">
+            <apex:outputText rendered="{!displayStageMessage}" value="The opportunity stage has been updated successfully."/>
+         </apex:outputPanel>
+      </apex:pageBlock>
+   </apex:form>
+</apex:page>
