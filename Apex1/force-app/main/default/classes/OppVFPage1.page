@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-21-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Opportunity">
+   <apex:sectionHeader title="Opportunity Detail" subtitle="{!Opportunity.Name}"/>
+   <apex:form>
+      <apex:pageBlock title="Opportunity Information">
+         <apex:pageBlockSection columns="2">
+            <apex:outputField value="{!Opportunity.Name}"/>
+            <apex:outputField value="{!Opportunity.StageName}"/>
+            <apex:outputField value="{!Opportunity.CloseDate}"/>
+            <apex:outputField value="{!Opportunity.Amount}"/>
+            <apex:outputField value="{!Opportunity.Account.Name}"/>
+         </apex:pageBlockSection>
+      </apex:pageBlock>
+   </apex:form>
+</apex:page>
