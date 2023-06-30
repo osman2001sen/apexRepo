@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 06-30-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:page standardController="Account" extensions="CalculateOpportunity" >
+
+
+<apex:pageblock title="Account">
+    <apex:pageblockSection Title="Details">
+        <apex:outputField value="{!Account.id}" />
+        <apex:outputField value="{!Account.Name}" />
+        <apex:outputField value="{!Account.Phone}" />
+        <apex:outputField value="{!Account.Website}" />
+    
+    
+    </apex:pageblockSection>
+    
+    <apex:pageblockSection Title="Opportunities" columns="1">
+       
+      
+       
+        <apex:pageblockTable var="singleOp" value="{!multiop}">
+            <apex:column value="{!singleOp.Id}"/>
+            <apex:column value="{!singleOp.Name}"/>
+            <apex:column value="{!singleOp.Amount}"/>
+            <apex:column value="{!singleOp.CloseDate}"/>
+            <apex:column value="{!singleOp.StageName}"/>
+            
+        
+        </apex:pageblockTable>
+        Total Amount : <b>{!totalamount}</b>
+    
+    
+    </apex:pageblockSection>
+
+
+</apex:pageblock>
+     
+</apex:page>
