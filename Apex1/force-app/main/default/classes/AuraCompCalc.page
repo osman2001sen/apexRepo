@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-23-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="xnumber" type="Decimal"/>
+    <aura:attribute name="ynumber" type="Decimal"/>
+    <aura:attribute name="result" type="Decimal"/>
+    
+    <lightning:input type="number" name="xnumberinput" label="Enter the x value" value="{!v.xnumber}"/>
+    <lightning:input type="number" name="ynumberinput" label="Enter the x value" value="{!v.ynumber}"/>
+    <lightning:button label="+" title="+" onclick="{! c.sum }"/>
+    
+    Result of : {!v.xnumber} + {!v.ynumber} = {!v.result}
+    
+</aura:component>
